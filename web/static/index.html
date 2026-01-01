@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Collaborative Markdown Editor</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Collaborative Markdown Editor</h1>
+                <div class="header-controls">
+                    <button id="newDocBtn" class="btn btn-primary">
+                        New Document
+                    </button>
+                    <button id="saveBtn" class="btn btn-success">Save</button>
+                    <span id="status" class="status">Disconnected</span>
+                    <div class="user-dropdown">
+                        <button id="userDropdownBtn" class="btn btn-users">
+                            <span id="userCount">0</span> Users
+                        </button>
+                        <div id="userDropdownMenu" class="dropdown-menu hidden">
+                            <div class="dropdown-header">Active Users</div>
+                            <div id="userList" class="user-list">
+                                <div class="no-users">No users connected</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="main-content">
+                <div class="editor-panel">
+                    <div class="panel-header">
+                        <h2>Editor</h2>
+                        <div class="user-info">
+                            <span id="activeUsers">0 users online</span>
+                        </div>
+                    </div>
+                    <textarea
+                        id="editor"
+                        placeholder="Start typing your markdown here..."
+                    ></textarea>
+                </div>
+
+                <div class="preview-panel">
+                    <div class="panel-header">
+                        <h2>Preview</h2>
+                    </div>
+                    <div id="preview" class="preview-content"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <h2>Join Document</h2>
+                <div class="form-group">
+                    <label for="documentId"
+                        >Document ID (leave empty for current):</label
+                    >
+                    <input
+                        type="text"
+                        id="documentId"
+                        placeholder="Enter document ID or leave empty"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="userName">Your Name:</label>
+                    <input
+                        type="text"
+                        id="userName"
+                        placeholder="Enter your name"
+                        required
+                    />
+                </div>
+                <div class="modal-actions">
+                    <button id="joinBtn" class="btn btn-primary">Join</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>
